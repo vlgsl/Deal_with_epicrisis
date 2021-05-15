@@ -24,7 +24,8 @@ print("New date in DD-MM-YYYY Format: ",change_date_format(file_))
 import re
 
 def change_date_format(dt):
-        return re.sub(r'(0?[1-9]|[12]\d|30|31)[.](0?[1-9]|1[0-2])[.](\d{4}|\d{2})', '\\1-\\2-\\3', dt)
-# dt1 = '31.12.20'
-# print("Original date in DD-MM-YY Format: ",dt1)
-print("New date in DD-MM-YYYY Format: ",change_date_format(file_))
+    """ на первом этапе переводим "нормальный формат" в формат через дефисы
+     на втором этапе ищем вариант дд.мм.гг в формат через дефисы"""
+    data_1 =  re.sub(r'(0?[1-9]|[12]\d|30|31)[.](0?[1-9]|1[0-2])[.](\d{4})', '\\1-\\2-\\3', dt)
+    return re.sub(r'(0?[1-9]|[12]\d|30|31)[.](0?[1-9]|1[0-2])[.](\d{2})', '\\1-\\2-20\\3', data_1)
+change_date_format(file_)
