@@ -23,3 +23,12 @@ def subit(m):
 s = 'I am going home now, thank you.' # string to modify
 #re.sub(r'(?!going|you)\b([\S\s]+?)(\b|$)', lambda x: (x.end() - x.start())*'_', s)
 print(re.sub(r'(.+?)(going|you|$)', subit, s))
+
+
+f= ''.join(f.split())
+patt1 = re.compile('(?<=прокальцитонин)\d{2}.\d{2}.\d{4}|\d{2}.\d{2}.\d{4}(?=прокальцитонин)')
+patt1.findall(f)
+
+patt1 = re.compile('(?<=Общийанализкрови)\d{2}.\d{2}.\d{4}|\d{2}.\d{2}.\d{4}(?=Общийанализкрови)')
+patt1.findall(f)
+
