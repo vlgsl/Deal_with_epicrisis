@@ -32,3 +32,17 @@ patt1.findall(f)
 patt1 = re.compile('(?<=Общийанализкрови)\d{2}.\d{2}.\d{4}|\d{2}.\d{2}.\d{4}(?=Общийанализкрови)')
 patt1.findall(f)
 
+keys = ['12-12-2020', '13-12-2020', '14-12-2020']
+values = [0.65, 0.62, 0.25]
+dictionary = dict(zip(keys, values))
+dictionary
+
+
+
+d = {'a': []}
+for date in proc_data:
+  for v in lab_data:
+    for i, j in lab_data[v].items():
+      if i == date:
+        d['a'].append(j)
+print(d)
