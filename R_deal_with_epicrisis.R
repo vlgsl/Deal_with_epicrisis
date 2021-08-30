@@ -1,6 +1,7 @@
 library(lubridate)
 library("readr")
 library(stringi)
+library(stringr)
 
 procalcitoninAndCovidFinder <- function(file_){
   # fuction returns TRUE or FALSE (presence procalcitonin and covid19)
