@@ -2,6 +2,11 @@ library(lubridate)
 library("readr")
 library(stringi)
 
+procalcitoninAndCovidFinder <- function(file_){
+  # fuction returns TRUE or FALSE (presence procalcitonin and covid19)
+  ifelse(stri_count(file_, regex = "(c|с).vid19|к.р.н.вирусная|(b|в)34(|2)|sarscov2|торсков2|cov19")!=0 & 
+           stri_count(file_, regex = "\\wр.кальцитони\\w|прокальцитон|прокальцит|прокальц|pct" )!=0,
+         return(TRUE), return(FALSE))
 
 my_data <- read_file("d:/PhD/data/R_train/35_Хлистовский-С-И.txt" )
 my_data
