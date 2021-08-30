@@ -26,3 +26,8 @@ str_extract_all(f, "\\d{2}.\\d{2}.\\d{4}(?=:прокальцитонин)") # fi
 lubridate::dmy("06-01-2021") # convert to date!
 str_extract_all(f, "(?<=гемостазиограмма)\\d{2}.\\d{2}.\\d{4}")# find date after pattern
 str_extract_all(f, "(?<=фибриноген)\\d{1,2}.\\d{1}")# find value after pattern
+
+
+SqlRender::writeSql("CREATE TABLE test (
+                    ID INT NOT NULL
+                    )","myParamStatement.sql") # creates sql file in DOCS
