@@ -3,6 +3,18 @@ library("readr")
 library(stringi)
 library(stringr)
 
+dateCleanFormat <- function(file_){
+  dd <- gsub('(0?[1-9]|[12]\\d|30|31)[.](0?[1-9]|1[0-2])[.](\\d{4})', 
+           '\\1-\\2-\\3', file_)
+  gsub('(0?[1-9]|[12]\\d|30|31)[.](0?[1-9]|1[0-2])[.](\\d{2})', 
+     '\\1-\\2-20\\3', dd)
+}
+  
+removeComas <- function(file_){
+  stringi::stri_replace_all_regex(file_, ',', '.')
+}
+  
+
 procalcitoninAndCovidFinder <- function(file_){
   # fuction returns TRUE or FALSE (presence procalcitonin and covid19)
   ifelse(stri_count(file_, regex = "(c|с).vid19|к.р.н.вирусная|(b|в)34(|2)|sarscov2|торсков2|cov19")!=0 & 
@@ -13,13 +25,8 @@ my_data <- read_file("d:/PhD/data/R_train/35_Хлистовский-С-И.txt" )
 my_data
 dmy(my_data)
 d2 <- strptime("2016-06-27", "%Y-%m-%d")
-dateCleanFormat <- function(file_){
-  dd <- gsub('(0?[1-9]|[12]\\d|30|31)[.](0?[1-9]|1[0-2])[.](\\d{4})', 
-           '\\1-\\2-\\3', file_)
-  gsub('(0?[1-9]|[12]\\d|30|31)[.](0?[1-9]|1[0-2])[.](\\d{2})', 
-     '\\1-\\2-20\\3', dd)
-}
 
+  
 f  <-  dateCleanFormat(my_data)
 f  <-  sub('.','', f) 
 f <- tolower(gsub("[[:space:]]", "", f)) # remove all spaces
