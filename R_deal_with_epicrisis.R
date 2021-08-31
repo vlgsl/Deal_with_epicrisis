@@ -29,6 +29,11 @@ numberCaseReportExtractor <- function(file_){
   str_extract(file_, '(?<=а№)\\d{1,5}')
 }
 
+birthdayExtractor <- function(file_){
+  str_extract(file_, '\\d{2}-\\d{2}-\\d{4}')
+}
+
+
 
 
 procalcitoninAndCovidFinder <- function(file_){
