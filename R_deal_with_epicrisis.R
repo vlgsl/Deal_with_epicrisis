@@ -21,7 +21,8 @@ procalcitoninDateExtractor <- function(file_){
 }
 
 procalcitoninValueExtractor <- function(file_){
-  stringr::str_extract_all(file_, "(?<=прокальцитонин)\\d{1,3}.\\d{1,2}")
+  stringr::str_extract_all(file_,
+                           "(?<=\\wр.кальцитони\\w|прокальцитон|прокальцит|прокальц|pct)\\d{1,3}.\\d{1,2}")
 }
 
 
