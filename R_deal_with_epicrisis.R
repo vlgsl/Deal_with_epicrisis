@@ -33,7 +33,13 @@ birthdayExtractor <- function(file_){
   str_extract(file_, '\\d{2}-\\d{2}-\\d{4}')
 }
 
+dischargeExtractor <- function(file_){
+  str_extract(file_, '(?<=выписан.)\\d{1,2}-\\d{1,2}-\\d{4}')
+}
 
+admissionExtractor <- function(file_){
+  str_extract(file_, '(?<=поступил.)\\d{1,2}-\\d{1,2}-\\d{4}')
+}
 
 
 procalcitoninAndCovidFinder <- function(file_){
