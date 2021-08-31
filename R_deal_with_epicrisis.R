@@ -10,6 +10,20 @@ dateCleanFormat <- function(file_){
      '\\1-\\2-20\\3', dd)
 }
   
+prepareBloodAnalysisForParsing <- function(file_){
+  # must be before spaces removment!
+  file_ -> stri_trans_tolower(file_)
+  str_replace_all(file_, 'оак', 'общийанализкрови')
+  str_replace_all(file_, 'бак\\s', 'общийанализкрови')
+  str_replace_all(file_,
+                  '[цcс]рб|\\w\\D(реактив.|реакт.|реак.)белок|crp', 
+                  'C-реактивный белок')
+  str_replace_all(file_,
+                  '(\\wреатини\\w|креатин|креат.)(?![а-яА-Я,])', 
+                  'Креатинин')
+}
+
+
 removeComasAndSpaces <- function(file_){
   gsub("[[:space:]]", "", 
        stringi::stri_trans_tolower(stri_replace_all_regex(file_, ',', '.')))
