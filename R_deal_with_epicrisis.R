@@ -85,3 +85,19 @@ str_extract_all(f, "(?<=фибриноген)\\d{1,2}.\\d{1}")# find value after
 SqlRender::writeSql("CREATE TABLE test (
                     ID INT NOT NULL
                     )","myParamStatement.sql") # creates sql file in DOCS
+  
+  
+  
+  # sorceConcept <- c('\\wреатини\\w|креатин|креат.|креат$',
+#                   '[цcс]рб|\\w\\D(реактив.|реакт.|реак.)белок|crp',
+#                   'тромбоциты|тромбоцит|тромб$|тромб.'
+#                  )
+# standardConcepts <- c('креатинин',
+#                       'c-реактивныйбелок',
+#                       'тромбоциты'
+#                      )
+# test <- 'креат срб тромбоцит'
+# for(i in 1:length(unlist(str_split(test, ' ')))){
+#   test <- str_replace_all(test, sorceConcept[i], standardConcepts[i])
+# }
+# test
