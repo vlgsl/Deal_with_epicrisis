@@ -10,10 +10,23 @@ dateCleanFormat <- function(file_){
      '\\1-\\2-20\\3', dd)
 }
   
-removeComas <- function(file_){
-  stringi::stri_replace_all_regex(file_, ',', '.')
+removeComasAndSpaces <- function(file_){
+  gsub("[[:space:]]", "", 
+       stringi::stri_trans_tolower(stri_replace_all_regex(file_, ',', '.')))
 }
   
+procalcitoninDateExtractor <- function(file_){
+  str_extract_all(file_, 
+                  "\\d{2}-\\d{2}-\\d{4}(?=:\\wр.кальцитони\\w|прокальцитон|прокальцит|прокальц|pct)")
+}
+
+procalcitoninValueExtractor <- function(file_){
+  stringr::str_extract_all(file_, "(?<=прокальцитонин)\\d{1,3}.\\d{1,2}")
+}
+
+
+
+
 
 procalcitoninAndCovidFinder <- function(file_){
   # fuction returns TRUE or FALSE (presence procalcitonin and covid19)
