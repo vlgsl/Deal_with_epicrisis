@@ -25,7 +25,9 @@ procalcitoninValueExtractor <- function(file_){
                            "(?<=\\wр.кальцитони\\w|прокальцитон|прокальцит|прокальц|pct)\\d{1,3}.\\d{1,2}")
 }
 
-
+numberCaseReportExtractor <- function(file_){
+  str_extract(file_, '(?<=а№)\\d{1,5}')
+}
 
 
 
