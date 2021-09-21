@@ -169,15 +169,15 @@ ids = c()
 fibrinogenValues = c()
 getFibrinogen <- function(file_){
   file_ <- gsub('(\\d{2}-\\d{2}-\\d{4})(гемостазиограмма)', '\\2\\1', file_)
-  for(date in str_extract_all(file_, '(?<=гемостазиограмма)(\\d{2}-\\d{2}-\\d{4}|)' )){
+  for(date in stri_extract_all(file_, regex='(?<=гемостазиограмма)(\\d{2}-\\d{2}-\\d{4}|)' )){
     id <- str_extract(file_, "\\d+")
     append(ids, id)
   }
   file_1 = gsub('(гемостазиограмма)(\\d{2}-\\d{2}-\\d{4})', '\\2\\1', file_)
-  for(value in str_extract_all(file_1, '(?<=гемостазиограмма)(\\d{2}-\\d{2}-\\d{4}|')){
-    value <-  sub('(.*)(фибриноген)(\\d.\\d*)', '\\3\\2\\1', value)
-    value <- sub('(фибриноген|гемостазиограмма).*', '', value)
+  for(value in stri_extract_all(file_1, regex='(?<=гемостазиограмма)(\\d{2}-\\d{2}-\\d{4}|)')){
+    value <-  gsub('(.*)(фибриноген)(\\d.\\d*)', '\\3\\2\\1', file_1)
+    value <- gsub('(фибриноген|гемостазиограмма).*', '', value)
     append(fibrinogenValues, value)
     }
-  return(fibrinogenValues)
+  return(value)
 }
